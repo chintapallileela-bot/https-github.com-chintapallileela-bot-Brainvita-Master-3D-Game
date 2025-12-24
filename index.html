@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <meta name="theme-color" content="#020617" />
+    <meta name="description" content="Play Brainvita Master 3D. A classic marble puzzle game." />
+    
+    <title>Brainvita Master 3D</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #020617;
+        overflow: hidden;
+        touch-action: manipulation;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+      .board-container-3d { perspective: 1200px; transform-style: preserve-3d; }
+      .board-base { transform-style: preserve-3d; will-change: transform; }
+      .btn-3d { position: relative; transition: all 0.1s; transform-style: preserve-3d; cursor: pointer; }
+      .btn-3d:active:not(:disabled) { transform: translateY(6px); }
+      .btn-surface { position: relative; z-index: 10; transition: all 0.1s; }
+      .btn-edge { position: absolute; inset: 0; top: 6px; z-index: 0; border-radius: 9999px; }
+      .hole-3d { background: radial-gradient(circle at 50% 50%, #020617 0%, #1e293b 100%); }
+      .marble-3d { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s; }
+      .marble-selected { transform: translateY(-25px) scale(1.15); z-index: 100; }
+      .caustics-overlay { position: absolute; inset: -20%; opacity: 0.1; mix-blend-mode: overlay; animation: caustics-drift 30s infinite linear; pointer-events: none; }
+      @keyframes caustics-drift { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(5deg) scale(1.1); } 100% { transform: rotate(0deg) scale(1); } }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "vite-plugin-pwa": "https://esm.sh/vite-plugin-pwa@^1.2.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <!-- Note: We point to index.tsx in the root -->
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
